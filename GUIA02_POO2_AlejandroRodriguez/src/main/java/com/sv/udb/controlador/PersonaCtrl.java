@@ -10,6 +10,7 @@ import com.sv.udb.recursos.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +57,7 @@ public class PersonaCtrl {
         boolean resp=false;
         Connection cn = new Conexion().getConn();
         try{
-            String Consulta = "INSERT INTO PERS VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String Consulta = "INSERT INTO PERS VALUES(?,?,?,?,?,?,?,?,?,?,?,NOW(),null,1)";
             PreparedStatement cmd = cn.prepareStatement(Consulta);
             cmd.setInt(1, obje.getCodiPers());
             cmd.setString(2, obje.getNombPers());
@@ -69,9 +70,6 @@ public class PersonaCtrl {
             cmd.setString(9, obje.getNitPers());
             cmd.setString(10, obje.getTipoSangPers());
             cmd.setInt(11, obje.getCodiUbicPers());
-            cmd.setString(12, obje.getFechAlta());
-            cmd.setString(13, obje.getFechBaja());
-            cmd.setInt(14, obje.getEstaPers());
             cmd.executeUpdate();
             resp=true;
         }
@@ -86,6 +84,45 @@ public class PersonaCtrl {
                 }
                 }
                 catch(Exception ex){
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return resp;
+    }
+    
+    public Persona cons(int CodiPers)
+    {
+        Persona resp = null;
+        Connection cn = new Conexion().getConn();
+        try
+        {
+//            String consulta = "SELECT B.codi_bode, P.codi_piez, P.nomb_piez, P.tipo_piez, P.marc_piez, PR.codi_prov, PR.nomb_prov, PR.dire_prov, PR.tele_prov, B.cant, B.fech_comp FROM bodega B INNER JOIN piezas P ON B.codi_piez = P.codi_piez INNER JOIN Proveedores PR ON B.codi_prov = PR.codi_prov WHERE codi_bode = ?";
+//            PreparedStatement cmd = cn.prepareStatement(consulta);
+//            cmd.setInt(1, CodiPers);
+//            ResultSet rs = cmd.executeQuery();
+//            if(rs.next())
+//            {
+//                resp = new Persona(rs.getInt(1), new Piezas(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)), new Proveedor(rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9)), rs.getInt(10), rs.getString(11));
+//            }
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        finally
+        {
+            if(cn != null)
+            {
+                try
+                {
+                    if(!cn.isClosed())
+                    {
+                        cn.close();
+                    }
+                }
+                catch(SQLException ex)
+                {
                     ex.printStackTrace();
                 }
             }

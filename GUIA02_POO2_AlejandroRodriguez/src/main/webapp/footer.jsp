@@ -17,7 +17,7 @@
             $(document).ready(function(){ $('.button-collapse').sideNav(); });
             $(document).ready(function(){ $('select').material_select(); });
             $(document).ready(function(){ $('.tooltipped').tooltip({delay: 50}); });
-            $(document).ready(function(){ $('.modal-trigger').leanModal(); });
+            $(document).ready(function(){ $('.modal-trigger').leanModal({ dismissible: false }); });
         </script>
     </body>
 </html>

@@ -39,7 +39,7 @@
                                     <td><c:out value="${fila.nombPers}"></c:out></td>
                                     <td><c:out value="${fila.apelPers}"></c:out></td>
                                     <td><c:out value="${fila.duiPers}"></c:out></td>
-                                    <td><input type="radio" name="codiPiezRadi" id="${fila.codiPers}" value="${fila.codiPers}"/><label for="${fila.codiPers}"></label></td>
+                                    <td><input type="radio" name="codiPersRadi" id="${fila.codiPers}" value="${fila.codiPers}"/><label for="${fila.codiPers}"></label></td>
                                 </tr>
                             </c:forEach>
                         </tbody>
@@ -57,9 +57,12 @@
         </div>
         <!-- Modal Structure -->
         <div id="modal1" class="modal">
-        <form method="POST" name="Frm" id="frmpers" action="">
+        <form method="POST" name="Frm" id="frmpers" action="PersonaServ">
         <div class="modal-content">
-            <h4 class="light italic">Nueva Persona</h4>
+            <div class="row">
+                <div class="col s10"><h4 class="light italic bold">Nueva Persona</h4></div>
+                <div class="col s2"><a onclick="$('#modal1').closeModal();" class="waves-effect waves-teal btn-flat"><i class="material-icons" style="float:right;">close</i></a></div>
+            </div>
             <div class="container">
                 <div class="row">
                     <div class="row col s12">
@@ -134,7 +137,7 @@
                             <label>Ubicacion:</label>
                         </div>
                     </div>
-                    <center><button class="btn" type="submit">Agregar</button></center>       
+                    <center><button class="btn" type="submit" name="cursBton" value="Guardar">Agregar</button></center>       
                 </div>
             </div>
         </div>
