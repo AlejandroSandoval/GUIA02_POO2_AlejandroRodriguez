@@ -47,10 +47,9 @@
                     <br/>
                     <div class="row">
                         <div class="col s12">
-                            <div class="col s12 m3 l3" id="buton"><button class="btn waves-effect waves-light teal darken-3 col s12" type="submit" name="cursBton" value="Consultar">Ver Ficha</button></div>
-                            <div class="col s12 m3 l3" id="buton"><button class="btn waves-effect waves-light teal darken-3 col s12" type="submit" name="cursBton" value="Consultar">Historial</button></div>
-                            <div class="col s12 m3 l3" id="buton"><button class="btn waves-effect waves-light teal darken-3 col s12" type="submit" name="cursBton" value="Consultar">Modificar</button></div>
-                            <div class="col s12 m3 l3" id="buton"><button class="btn waves-effect waves-light teal darken-3 col s12" type="submit" name="cursBton" value="Consultar">Eliminar</button></div>
+                            <div class="col s12 m4 l4" id="buton"><button class="btn waves-effect waves-light teal darken-3 col s12" type="submit" name="cursBton" value="Ficha">Ver Ficha</button></div>
+                            <div class="col s12 m4 l4" id="buton"><button class="btn waves-effect waves-light teal darken-3 col s12" type="submit" name="cursBton" value="Historial">Historial</button></div>
+                            <div class="col s12 m4 l4" id="buton"><button class="btn waves-effect waves-light teal darken-3 col s12" type="submit" name="cursBton" value="Consultar">Consultar</button></div>
                         </div>
                     </div>
                 </form>
@@ -64,11 +63,12 @@
             <div class="container">
                 <div class="row">
                     <div class="row col s12">
+                        <input type="hidden" name="CodiPers" value="${CodiPers}"/>
                         <div class="input-field col s12 m12 l6">
-                            <input placeholder="Nombres" id="txtnomb" name="txtnomb" type="text" class="validate">
+                            <input placeholder="Nombres" id="NombPers" name="NombPers" type="text" class="validate">
                         </div>
                         <div class="input-field col s12 m12 l6">
-                            <input placeholder="Apellidos" id="txtapel" name="txtapel" type="text" class="validate">
+                            <input placeholder="Apellidos" id="ApelPers" name="ApelPers" type="text" class="validate">
                         </div>
                         <div class="input-field col s12 m12 l6">
                             <select name="cmbTipo" id="cmbTipo">
@@ -94,14 +94,14 @@
                              <label>Genero:</label>
                         </div>
                         <div class="input-field col s12 m12 l6">
-                             <input type="date"class="form-control" name="date2" id="date2">
+                             <input type="date"class="form-control" name="fechNaci" id="date2">
                              <label for="date2" class="active">Fecha Nac.</label>
                         </div>
                         <div class="input-field col s12 m12 l6">
-                            <input placeholder="DUI" id="txtdui" name="txtdui" type="text" class="validate">
+                            <input placeholder="DUI" id="DuiPers" name="DuiPers" type="text" class="validate">
                         </div>
                         <div class="input-field col s12 m12 l6">
-                            <input placeholder="NIT" id="txtnit" name="txtnit" type="text" class="validate">
+                            <input placeholder="NIT" id="NitPers" name="NitPers" type="text" class="validate">
                         </div>
                         <div class="input-field col s12 m12 l6">
                              <select name="cmbsangre" id="cmbsangre">

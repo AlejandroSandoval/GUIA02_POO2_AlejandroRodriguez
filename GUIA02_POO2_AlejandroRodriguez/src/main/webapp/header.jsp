@@ -18,10 +18,10 @@
             $().ready(function() {
                 $("#frmpers").validate({
                     rules: {
-                            txtnomb: "required",
-                            txtapel: "required",
-                            txtdui: "required",
-                            txtnit: "required"
+                            NombPers: "required",
+                            ApelPers: "required",
+                            DuiPers: "required",
+                            NitPers: "required"
                     },
                     errorElement: 'div'
                 });
