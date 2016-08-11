@@ -16,3 +16,14 @@ and open the template in the editor.
   main {
     flex: 1 0 auto;
   }
+
+  #buton{
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+  
+  #frmpers div.error {
+    color: red;
+    font-size: 12px;
+    float: right;
+  }

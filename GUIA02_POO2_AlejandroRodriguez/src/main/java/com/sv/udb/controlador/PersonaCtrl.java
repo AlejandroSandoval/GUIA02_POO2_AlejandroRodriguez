@@ -24,7 +24,7 @@ public class PersonaCtrl {
       Connection cn = new Conexion().getConn();
       try{
            String Consulta="select codi_pers, nomb_pers, apel_pers, foto_pers, codi_tipo_pers, gene_pers,"
-                   + "fech_naci_pers, dui_pers, nit_pers, tipo_sang_pers, codi_ubic_pers,"
+                   + "fech_naci_pers, dui_pers, nit_pers, tipo_sang_pers, codi_ubic_geog,"
                    + " fech_alta, fech_baja, esta from pers";
            PreparedStatement cmd = cn.prepareStatement(Consulta);
            ResultSet rs = cmd.executeQuery();

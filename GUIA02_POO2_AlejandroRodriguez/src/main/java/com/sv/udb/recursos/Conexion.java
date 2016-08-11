@@ -40,7 +40,7 @@ public class Conexion {
         {
             Properties prop = new Properties();
 //            String propFileName = System.getProperty("user.dir") + "/config.properties";
-            String propFileName = URLDecoder.decode(this.getClass().getClassLoader().getResource("/umm/config.properties").getPath(), "UTF-8");
+            String propFileName = URLDecoder.decode(this.getClass().getClassLoader().getResource("/recursos/config.properties").getPath(), "UTF-8");
             File file = new File(propFileName);
             FileInputStream fis = new FileInputStream(file.getAbsoluteFile());
             prop.load(fis);
