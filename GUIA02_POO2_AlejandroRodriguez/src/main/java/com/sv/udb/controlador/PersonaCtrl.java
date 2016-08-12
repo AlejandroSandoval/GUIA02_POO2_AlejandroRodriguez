@@ -7,6 +7,8 @@ package com.sv.udb.controlador;
 
 import com.sv.udb.modelo.Persona;
 import com.sv.udb.recursos.Conexion;
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -53,11 +55,43 @@ public class PersonaCtrl {
         return resp;  
     }
     
+    public int Maxcod()
+    {
+        int codi = 0;
+        Connection cn = new Conexion().getConn();
+        try {
+            String consulta = "SELECT MAX(codi_pers) from pers";
+            PreparedStatement cmd = cn.prepareStatement(consulta);
+            ResultSet rs = cmd.executeQuery();
+            if(rs.next())
+            {
+                codi = rs.getInt(1) + 1;
+            }
+        } 
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        finally{
+            if(cn!=null){
+                try{
+                if(!cn.isClosed()){
+                    cn.close();
+                }
+                }
+                catch(Exception ex){
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return codi;
+    }
+    
     public boolean guar(Persona obje){
         boolean resp=false;
         Connection cn = new Conexion().getConn();
         try{
             String Consulta = "INSERT INTO PERS VALUES(?,?,?,?,?,?,?,?,?,?,?,NOW(),null,1)";
+            FileInputStream fis = null;
             PreparedStatement cmd = cn.prepareStatement(Consulta);
             cmd.setInt(1, obje.getCodiPers());
             cmd.setString(2, obje.getNombPers());

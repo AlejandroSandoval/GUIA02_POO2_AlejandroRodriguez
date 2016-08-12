@@ -10,8 +10,8 @@ import com.sv.udb.modelo.Persona;
 import com.sv.udb.modelo.Ubicacion;
 import com.sv.udb.modelo.TipoPersona;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author aleso
  */
+@MultipartConfig(maxFileSize = 16177215)
 @WebServlet(name = "PersonaServ", urlPatterns = {"/PersonaServ"})
 public class PersonaServ extends HttpServlet {
 
@@ -57,6 +58,7 @@ public class PersonaServ extends HttpServlet {
                     persona.setTipoSangPers(request.getParameter("cmbsangre"));
                     persona.setFechNaciPers(request.getParameter("fechNaci"));
                     persona.setFotoPers("null");
+                    persona.setCodiPers(new PersonaCtrl().Maxcod());
                     mens = new PersonaCtrl().guar(persona) ? "Datos guardados exitosamente" : "Datos NO guardados";
                 }
                 else if(CRUD.equals("Modificar"))

@@ -21,7 +21,11 @@
                             NombPers: "required",
                             ApelPers: "required",
                             DuiPers: "required",
-                            NitPers: "required"
+                            NitPers: "required",
+                            fechNaci: {
+                                required: true,
+                                date: true
+                            }
                     },
                     errorElement: 'div'
                 });

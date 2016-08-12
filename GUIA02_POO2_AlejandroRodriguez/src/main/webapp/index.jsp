@@ -6,6 +6,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://displaytag.sf.net/el" prefix="display" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@page import="com.sv.udb.controlador.PersonaCtrl"%>
 <%@page import="com.sv.udb.modelo.Persona"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -23,27 +27,15 @@
             <div class="row col s12"><blockquote>${mensAler}</blockquote></div>
             <div class="row">
                 <form method="POST" name="Frm" action="PersonaServ">
-                <jsp:useBean id="beanPersonaCtrl" class="com.sv.udb.controlador.PersonaCtrl" scope="page"/>
-                    <table border="1" class="bordered highlight centered">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>DUI</th>
-                                <th>--</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach items="${beanPersonaCtrl.consTodo()}" var="fila">
-                                <tr>
-                                    <td><c:out value="${fila.nombPers}"></c:out></td>
-                                    <td><c:out value="${fila.apelPers}"></c:out></td>
-                                    <td><c:out value="${fila.duiPers}"></c:out></td>
-                                    <td><input type="radio" name="codiPersRadi" id="${fila.codiPers}" value="${fila.codiPers}"/><label for="${fila.codiPers}"></label></td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
+                <% request.setAttribute( "demoAttr", new PersonaCtrl().consTodo()); %>
+                <display:table id="Persona" name="demoAttr" class="bordered highlight centered" pagesize="4">
+                    <display:column property="nombPers" title="Nombres" sortable="true"/>
+                    <display:column property="apelPers" title="Apellidos" sortable="true"/>
+                    <display:column property="duiPers" title="DUI" sortable="true"/>
+                    <display:column title="Seleccionar" sortable="true">
+                        <input type="radio" name="codiPersRadio" id="${Persona.codiPers}" value="${Persona.codiPers}"/><label for="${Persona.codiPers}"></label>
+                    </display:column>
+                </display:table>
                     <br/>
                     <div class="row">
                         <div class="col s12">
@@ -57,7 +49,7 @@
         </div>
         <!-- Modal Structure -->
         <div id="modal1" class="modal">
-        <form method="POST" name="Frm" id="frmpers" action="PersonaServ">
+        <form method="POST" name="Frm" id="frmpers" enctype="multipart/form-data" action="PersonaServ">
         <div class="modal-content">
             <div class="row">
                 <div class="col s10"><h4 class="light italic bold">Nueva Persona</h4></div>
@@ -96,6 +88,17 @@
                              </select>
                              <label>Genero:</label>
                         </div>
+                        <div class="input-field col s12">
+                            <div class="file-field input-field">
+                                <div class="btn">
+                                  <span>File</span>
+                                  <input type="file">
+                                </div>
+                                <div class="file-path-wrapper">
+                                  <input class="file-path validate" name="FotoPers" type="text">
+                                </div>
+                            </div>
+                            </div>
                         <div class="input-field col s12 m12 l6">
                              <input type="date"class="form-control" name="fechNaci" id="date2">
                              <label for="date2" class="active">Fecha Nac.</label>
